@@ -39,7 +39,7 @@ class RoleController extends Controller
     {
         $role = Role::create(['name' => $request->role_name]);
 		$role->givePermissionTo($request->selectedPermissions);
-		
+
 		return redirect()->action([RoleController::class, 'index']);
     }
 
@@ -49,9 +49,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        //
+        return inertia('Role/View', ['role_name' => $role->name, 'permissions' => $role->permissions->pluck('name')]);
     }
 
     /**
@@ -83,8 +83,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->action([RoleController::class, 'index']);
     }
 }

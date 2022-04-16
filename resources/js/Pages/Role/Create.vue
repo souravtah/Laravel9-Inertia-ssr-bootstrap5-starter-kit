@@ -6,7 +6,7 @@
       <h2 class="h4 font-weight-bold">
         Create role
       </h2>
-	  
+
     </template>
 
     <div class="card shadow-sm">
@@ -25,16 +25,15 @@
 			<br />
 			<!-- Checkbox -->
 			<div id="permission_list" v-for="permission in permission_list" :key="permission.id" class="form-check form-check-inline">
-			
+
 			  <input class="form-check-input" :value=permission.name type="checkbox" id="inlineCheckbox{{ permission.id }}" v-model="form.selectedPermissions"/>
-			  
+
 			  <label class="form-check-label" for="inlineCheckbox{{ permission.id }}">{{ permission.name }}</label>
 			</div>
 			<br />
 		  <!-- Submit button -->
 		  <button type="submit" :disabled="form.processing" class="btn btn-primary btn-block my-4">Save Role</button>
 		</form>
-		<div>Checked permissions: {{ selectedPermissions }}</div>
       </div>
     </div>
   </breeze-authenticated-layout>

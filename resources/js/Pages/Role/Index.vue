@@ -6,7 +6,7 @@
       <h2 class="h4 font-weight-bold">
         Roles <Link :href="route('roles.create')" type="button" class="ml-5 btn btn-primary">Create new role</Link>
       </h2>
-	  
+
     </template>
 
     <div class="card shadow-sm">
@@ -25,9 +25,9 @@
 			  <td>{{ role.name }}</td>
 			  <td>
 				<div class="btn-group btn-group-sm" role="group" aria-label="CRUD">
-				  <button type="button" class="btn btn-info">View</button>
+				  <Link :href="route('roles.show', [role.id])" type="button" class="btn btn-info">View</Link>
 				  <button type="button" class="btn btn-success">Edit</button>
-				  <button type="button" class="btn btn-warning">Delete</button>
+				  <Link :href="route('roles.destroy', [role.id])" method="DELETE" type="button" class="btn btn-warning">Delete</Link>
 				</div>
 			  </td>
 			</tr>

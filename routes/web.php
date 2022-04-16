@@ -27,11 +27,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-/* Route::get('/roles', function () {
-    return Inertia::render('Roles');
-})->middleware(['auth', 'verified'])->name('roles'); */
-Route::resource('roles', \App\Http\Controllers\RoleController::class);
+
+Route::resource('roles', \App\Http\Controllers\RoleController::class)->middleware(['auth', 'verified']);
+
 Route::get('/permissions', function () {
     return Inertia::render('Permissions');
 })->middleware(['auth', 'verified'])->name('permissions');
+
 require __DIR__.'/auth.php';
