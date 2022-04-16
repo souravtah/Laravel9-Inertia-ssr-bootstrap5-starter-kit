@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
       <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand" href="/">
+		<a class="navbar-brand" href="/">
           <Link :href="route('dashboard')">
             <breeze-application-logo width="36" />
           </Link>
@@ -17,6 +17,12 @@
           <ul class="navbar-nav me-auto">
             <breeze-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
               Dashboard
+            </breeze-nav-link>
+			<breeze-nav-link :href="route('roles')" :active="route().current('roles')">
+              Roles
+            </breeze-nav-link>
+			<breeze-nav-link :href="route('permissions')" :active="route().current('permissions')">
+              Permissions
             </breeze-nav-link>
           </ul>
 
@@ -52,7 +58,7 @@
     </header>
 
     <!-- Page Content -->
-    <main class="container my-5">
+    <main class="container my-2">
       <slot />
     </main>
   </div>

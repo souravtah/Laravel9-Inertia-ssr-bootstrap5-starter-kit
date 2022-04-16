@@ -1,10 +1,10 @@
 <template>
-  <Head title="Dashboard" />
+  <Head title="Permissions" />
 
   <breeze-authenticated-layout>
     <template #header>
       <h2 class="h4 font-weight-bold">
-        Dashboard
+        Permissions
       </h2>
     </template>
 
