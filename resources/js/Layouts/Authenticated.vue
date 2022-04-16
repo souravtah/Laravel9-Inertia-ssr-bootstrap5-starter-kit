@@ -18,7 +18,7 @@
             <breeze-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
               Dashboard
             </breeze-nav-link>
-			<breeze-nav-link :href="route('roles')" :active="route().current('roles')">
+			<breeze-nav-link :href="route('roles.index')" :active="route().current('roles.*')">
               Roles
             </breeze-nav-link>
 			<breeze-nav-link :href="route('permissions')" :active="route().current('permissions')">
@@ -58,7 +58,7 @@
     </header>
 
     <!-- Page Content -->
-    <main class="container my-2">
+    <main class="container my-4">
       <slot />
     </main>
   </div>
