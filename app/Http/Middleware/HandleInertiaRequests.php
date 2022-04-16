@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
+use Illuminate\Support\Facades\Auth;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -41,6 +42,8 @@ class HandleInertiaRequests extends Middleware
             'ziggy' => function () {
                 return (new Ziggy)->toArray();
             },
+			'roles' => $request->user()?->getRoleNames()?->toArray(),
+			'permissions' => $request->user()?->getPermissionsViaRoles()?->pluck('name')?->toArray(),
         ]);
     }
 }

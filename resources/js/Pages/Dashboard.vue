@@ -10,7 +10,7 @@
 
     <div class="card my-4 shadow-sm">
       <div class="card-body">
-        You're logged in!
+        You're logged in as {{ auth.user.name }}, with {{ roles.join(', ') }} roles. You are permitted to {{ permissions.join(', ') }}.
       </div>
     </div>
   </breeze-authenticated-layout>
@@ -25,5 +25,10 @@ export default {
     BreezeAuthenticatedLayout,
     Head,
   },
+  props: {
+	auth: Object,
+	roles: Array,
+	permissions: Array,
+  }
 }
 </script>
