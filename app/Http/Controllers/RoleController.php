@@ -60,9 +60,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        $granted_permission_list = $role->permissions->pluck('name', 'id')->toArray();
+        $all_permissions = Permission::select('id','name')->get()->pluck('name', 'id')->toArray();
+        return inertia('Role/Edit', compact('granted_permission_list', 'role', 'all_permissions'));
     }
 
     /**
@@ -72,9 +74,14 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        dd($request);
+        $role->name = $request->role_name;
+		$role->syncPermissions($request->selectedPermissions);
+        $role->save();
+
+		return redirect()->action([RoleController::class, 'index']);
     }
 
     /**

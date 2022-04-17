@@ -26,7 +26,7 @@
 			  <td>
 				<div class="btn-group btn-group-sm" role="group" aria-label="CRUD">
 				  <Link :href="route('roles.show', [role.id])" type="button" class="btn btn-info">View</Link>
-				  <button type="button" class="btn btn-success">Edit</button>
+				  <Link :href="route('roles.edit', [role.id])" type="button" class="btn btn-success">Edit</Link>
 				  <Link :href="route('roles.destroy', [role.id])" method="DELETE" type="button" class="btn btn-warning">Delete</Link>
 				</div>
 			  </td>
