@@ -10,7 +10,7 @@
 
     <div class="card shadow-sm">
       <div class="card-body">
-        You're logged in as {{ auth.user.name }}, with {{ roles.join(', ') }} roles. You are permitted to {{ permissions.join(', ') }}.
+       You're logged in as {{ auth.user.name }}, with {{ roles.join(', ') }} roles. You are permitted to {{ permissions.join(', ') }}.
       </div>
     </div>
   </breeze-authenticated-layout>
