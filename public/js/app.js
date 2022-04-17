@@ -25403,7 +25403,7 @@ __webpack_require__.r(__webpack_exports__);
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
       id: props.role.id,
       role_name: props.role.name,
-      selectedPermissions: props.all_permissions.name
+      selectedPermissions: []
     });
     return {
       form: form

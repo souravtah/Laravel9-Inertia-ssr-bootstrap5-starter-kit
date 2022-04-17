@@ -73,7 +73,7 @@ export default {
 	const form = useForm({
         id: props.role.id,
 		role_name: props.role.name,
-		selectedPermissions: props.all_permissions.name,
+		selectedPermissions: []
 	})
 	return { form }
   }
