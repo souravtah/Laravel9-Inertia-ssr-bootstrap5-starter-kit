@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
-use Inertia\Inertia;
 
 class PermissionController extends Controller
 {
@@ -15,7 +14,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        return inertia('Permission/Index', ['permissions' => Permission::select('id','name')->get()]);
     }
 
     /**
@@ -25,7 +24,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Permission/Create');
     }
 
     /**
@@ -36,7 +35,9 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $permission = Permission::create(['name' => $request->permission_name]);
+
+		return redirect()->action([PermissionController::class, 'index']);
     }
 
     /**
@@ -45,9 +46,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Permission $permission)
     {
-        //
+        return inertia('Permission/View', compact('permission'));
     }
 
     /**
@@ -56,9 +57,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        //
+        return inertia('Permission/Edit', compact('permission'));
     }
 
     /**
@@ -68,9 +69,12 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
-        //
+        $permission->update(['name' => $request->permission_name]);
+        $permission->save();
+
+		 return redirect()->action([PermissionController::class, 'index']);
     }
 
     /**
@@ -79,8 +83,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        return redirect()->action([PermissionController::class, 'index']);
     }
 }

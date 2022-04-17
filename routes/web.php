@@ -30,8 +30,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('roles', \App\Http\Controllers\RoleController::class)->middleware(['auth', 'verified']);
 
-Route::get('/permissions', function () {
-    return Inertia::render('Permissions');
-})->middleware(['auth', 'verified'])->name('permissions');
+Route::resource('permissions', \App\Http\Controllers\PermissionController::class)->middleware(['auth', 'verified']);
+
 
 require __DIR__.'/auth.php';
