@@ -20,14 +20,14 @@
 			</tr>
 		  </thead>
 		  <tbody>
-			<tr v-for="role in roles" :key="role.id">
+			<tr v-for="role in all_roles" :key="role.id">
 			  <th scope="row">{{ role.id }}</th>
 			  <td>{{ role.name }}</td>
 			  <td>
 				<div class="btn-group btn-group-sm" role="group" aria-label="CRUD">
-				  <Link :href="route('roles.show', [role.id])" type="button" class="btn btn-info">View</Link>
-				  <Link :href="route('roles.edit', [role.id])" type="button" class="btn btn-success">Edit</Link>
-				  <Link :href="route('roles.destroy', [role.id])" method="DELETE" type="button" class="btn btn-warning">Delete</Link>
+				  <Link :href="route('roles.show', role.id)" type="button" class="btn btn-info">View</Link>
+				  <Link :href="route('roles.edit', role.id)" type="button" class="btn btn-success">Edit</Link>
+				  <button @click="destroy(role.id)" type="button" class="btn btn-warning">Delete</button>
 				</div>
 			  </td>
 			</tr>
@@ -41,6 +41,7 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head, Link } from '@inertiajs/inertia-vue3'
+import { Inertia } from '@inertiajs/inertia'
 
 export default {
   components: {
@@ -49,7 +50,15 @@ export default {
 	Link
   },
   props: {
-	roles: Array
+	all_roles: Array
+  },
+  setup() {
+      const destroy = (id) => {
+          if (confirm("Are you sure?")) {
+              Inertia.delete(route('roles.destroy', id))
+          }
+      }
+      return {destroy}
   }
 }
 </script>

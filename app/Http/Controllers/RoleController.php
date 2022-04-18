@@ -20,7 +20,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return inertia('Role/Index', ['roles' => Role::select('id','name')->get()]);
+        return inertia('Role/Index', ['all_roles' => Role::select('id','name')->get()]);
     }
 
     /**

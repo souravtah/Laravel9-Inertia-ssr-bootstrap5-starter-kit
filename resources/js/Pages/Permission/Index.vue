@@ -25,9 +25,9 @@
 			  <td>{{ permission.name }}</td>
 			  <td>
 				<div class="btn-group btn-group-sm" role="group" aria-label="CRUD">
-				  <Link :href="route('permissions.show', [permission.id])" type="button" class="btn btn-info">View</Link>
-				  <Link :href="route('permissions.edit', [permission.id])" type="button" class="btn btn-success">Edit</Link>
-				  <Link :href="route('permissions.destroy', [permission.id])" method="DELETE" type="button" class="btn btn-warning">Delete</Link>
+				  <Link :href="route('permissions.show', permission.id)" type="button" class="btn btn-info">View</Link>
+				  <Link :href="route('permissions.edit', permission.id)" type="button" class="btn btn-success">Edit</Link>
+				  <button @click="destroy(permission.id)" type="button" class="btn btn-warning">Delete</button>
 				</div>
 			  </td>
 			</tr>
@@ -41,6 +41,7 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head, Link } from '@inertiajs/inertia-vue3'
+import { Inertia } from '@inertiajs/inertia'
 
 export default {
   components: {
@@ -50,6 +51,14 @@ export default {
   },
   props: {
 	permissions: Array
+  },
+  setup() {
+      const destroy = (id) => {
+          if (confirm("Are you sure?")) {
+              Inertia.delete(route('permissions.destroy', id))
+          }
+      }
+      return {destroy}
   }
 }
 </script>
