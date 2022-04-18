@@ -50,7 +50,7 @@ export default {
 	Link
   },
   props: {
-	permissions: Array
+	permissions: Object
   },
   setup() {
       const destroy = (id) => {

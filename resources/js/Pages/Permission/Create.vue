@@ -40,7 +40,7 @@ export default {
 	Link
   },
   props: {
-	permission_list: Array,
+	permission_list: Object,
     errors: Object
   },
   setup() {

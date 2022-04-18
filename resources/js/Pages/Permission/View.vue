@@ -12,7 +12,7 @@
     <div class="card">
     <h5 class="card-header">This permission details are as follows:</h5>
     <div class="card-body">
-        <h5 class="card-title">{{ permission.name }}</h5>
+        <h5 class="card-title">{{ permission }}</h5>
         <Link :href="route('permissions.index')" class="btn btn-primary">Back</Link>
     </div>
     </div>
@@ -30,7 +30,7 @@ export default {
 	Link
   },
   props: {
-    permission: Array
+    permission: String
   }
 }
 </script>

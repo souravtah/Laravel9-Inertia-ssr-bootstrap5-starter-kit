@@ -52,7 +52,7 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        return inertia('Permission/View', compact('permission'));
+        return inertia('Permission/View', ['permission' => $permission->name]);
     }
 
     /**
