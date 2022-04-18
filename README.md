@@ -12,6 +12,8 @@ Use this starter kit to develop with Laravel 9 setup InertiaJs with Server Side 
 * Node 14 or latest
 
 ## How to start 
+<b>To use roles & permissions: select the branch "Branch_with_roles_permissions"</b>
+
 Clone the repo https://github.com/souravtah/Laravel9-Inertia-ssr-bootstrap5-starter-kit.git
 ```bash
 $ cp .env.example .env # setup your database
