@@ -17,7 +17,8 @@
 				  <div class="form-outline">
 					<label class="form-label" for="permission_name">Permission name</label>
 					<input type="text" name="permission_name" id="permission_name" class="form-control" v-model="form.permission_name"/>
-				  </div>
+                    <div class="text-danger">{{ errors.permission_name }}</div>
+                  </div>
 				</div>
 			</div>
 		  <!-- Submit button -->
@@ -40,7 +41,8 @@ export default {
 	Link
   },
   props: {
-    permission: Object
+    permission: Object,
+    errors: Object
   },
   setup(props) {
 	const form = useForm({

@@ -17,6 +17,7 @@
 				  <div class="form-outline">
 					<label class="form-label" for="role_name">Role name</label>
 					<input type="text" name="role_name" id="role_name" class="form-control" v-model="form.role_name"/>
+                    <div class="text-danger">{{ errors.role_name }}</div>
 				  </div>
 				</div>
 			</div>
@@ -30,6 +31,7 @@
 
 			  <label class="form-check-label" for="inlineCheckbox{{ permission.id }}">{{ permission.name }}</label>
 			</div>
+            <div class="text-danger">{{ errors.selectedPermissions }}</div>
 			<br />
 		  <!-- Submit button -->
 		  <button type="submit" :disabled="form.processing" class="btn btn-primary btn-block my-4">Save Role</button>
@@ -50,7 +52,8 @@ export default {
 	Link
   },
   props: {
-	permission_list: Array
+	permission_list: Array,
+    errors: Object
   },
   setup() {
 	const form = useForm({

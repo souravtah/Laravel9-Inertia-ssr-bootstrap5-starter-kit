@@ -53,6 +53,7 @@
     <!-- Page Heading -->
     <header class="d-flex py-3 bg-white shadow-sm border-bottom">
       <div class="container">
+        <div v-if="$page.props.flash.message" class="text-info">{{ $page.props.flash.message }}</div>
         <slot name="header" />
       </div>
     </header>

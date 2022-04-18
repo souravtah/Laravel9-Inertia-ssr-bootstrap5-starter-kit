@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PermissionRequest;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
@@ -33,11 +33,11 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
         $permission = Permission::create(['name' => $request->permission_name]);
-
-		return redirect()->action([PermissionController::class, 'index']);
+		return redirect()->action([PermissionController::class, 'index'])
+                        ->with('message', 'Permission created successfully');
     }
 
     /**
@@ -69,12 +69,13 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(PermissionRequest $request, Permission $permission)
     {
         $permission->update(['name' => $request->permission_name]);
         $permission->save();
 
-		 return redirect()->action([PermissionController::class, 'index']);
+		 return redirect()->action([PermissionController::class, 'index'])
+                    ->with('message', 'Permission updated successfully');
     }
 
     /**
@@ -86,6 +87,7 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         $permission->delete();
-        return redirect()->action([PermissionController::class, 'index']);
+        return redirect()->action([PermissionController::class, 'index'])
+                        ->with('message', 'Permission deleted successfully');
     }
 }

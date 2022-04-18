@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoleRequest;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -34,12 +35,13 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         $role = Role::create(['name' => $request->role_name]);
 		$role->givePermissionTo($request->selectedPermissions);
 
-		return redirect()->action([RoleController::class, 'index']);
+		return redirect()->action([RoleController::class, 'index'])
+                        ->with('message', 'Role created successfully');
     }
 
     /**
@@ -73,13 +75,14 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleRequest $request, Role $role)
     {
         $role->update(['name' => $request->role_name]);
 		$role->syncPermissions($request->selectedPermissions);
         $role->save();
 
-		return redirect()->action([RoleController::class, 'index']);
+		return redirect()->action([RoleController::class, 'index'])
+                        ->with('message', 'Role updated successfully');
     }
 
     /**
@@ -91,6 +94,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->action([RoleController::class, 'index']);
+        return redirect()->action([RoleController::class, 'index'])
+                        ->with('message', 'Role deleted successfully');
     }
 }
