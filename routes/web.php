@@ -24,13 +24,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])
+        ->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('roles', \App\Http\Controllers\RoleController::class)->middleware(['auth', 'verified']);
+Route::resource('roles', \App\Http\Controllers\RoleController::class)
+        ->middleware(['auth', 'verified']);
 
-Route::resource('permissions', \App\Http\Controllers\PermissionController::class)->middleware(['auth', 'verified']);
+Route::resource('permissions', \App\Http\Controllers\PermissionController::class)
+    ->middleware(['auth', 'verified']);
 
 
 require __DIR__.'/auth.php';

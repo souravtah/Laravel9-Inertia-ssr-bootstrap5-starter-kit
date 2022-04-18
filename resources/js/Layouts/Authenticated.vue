@@ -18,10 +18,10 @@
             <breeze-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
               Dashboard
             </breeze-nav-link>
-			<breeze-nav-link :href="route('roles.index')" :active="route().current('roles.*')">
+			<breeze-nav-link v-if="$page.props.roles.includes('admin')" :href="route('roles.index')" :active="route().current('roles.*')">
               Roles
             </breeze-nav-link>
-			<breeze-nav-link :href="route('permissions.index')" :active="route().current('permissions.*')">
+			<breeze-nav-link v-if="$page.props.roles.includes('admin')" :href="route('permissions.index')" :active="route().current('permissions.*')">
               Permissions
             </breeze-nav-link>
           </ul>
