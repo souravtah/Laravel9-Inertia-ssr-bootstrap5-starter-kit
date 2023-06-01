@@ -44,7 +44,17 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ])->assignRole(['admin']);;
+        ]);
+
+        try {
+            $user->assignRole(['admin']);
+        } catch (\Throwable $th) {
+            if (!app()->environment(['production'])) {
+                throw $th;
+            }
+
+            \Log::error($th);
+        }
 
         event(new Registered($user));
 
