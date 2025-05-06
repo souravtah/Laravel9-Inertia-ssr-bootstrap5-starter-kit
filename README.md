@@ -8,7 +8,7 @@ Use this starter kit to develop with Laravel 9 setup InertiaJs with Server Side 
 
 ## Requirements
 
-* PHP 8.0 or latest
+* PHP 8.0
 * Node 14 or latest
 
 ## How to start 
